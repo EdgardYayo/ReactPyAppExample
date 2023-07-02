@@ -3,11 +3,22 @@ from reactpy import component, html, hooks
 
 @component
 def Form():
-    face, set_face = hooks.use_state(False)
-    facing = "😊" if face else "Submit"
+   
 
     
-    return html.form(
+    return html.form({
+        "style": {
+            "display": "flex",
+            "flex_direction": "column",
+            "align_items":"center",
+            "justify_content":"center",
+            "gap":"10px",
+            "border": "2px black solid",
+            "width":"500px",
+            "margin":"auto"
+            
+        }
+    },  html.h1("Formulario de Registro"),
         html.label(
             html.input({
                 "type":"text",
@@ -26,7 +37,7 @@ def Form():
                 "placeholder":"Birthday"
             })
         ),
-        html.button({
+        html.button({"style": { "margin_bottom":"10px" } },{
             "type":"submit"
-        }, facing)
+        }, "Submit")
     )
